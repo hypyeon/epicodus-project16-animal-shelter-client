@@ -15,8 +15,10 @@
 }
 
 <h1>All About @Model.Name</h1>
+<img src="~/img/@(Model.Name).png" alt="@Model.Name" style="max-width: 300px;" />
 
 <p>Sex: @Model.Sex</p>
 <p>Neutered/Spayed: @yesOrNo</p>
 
+<p>@Html.ActionLink("Edit Info", "Edit", new { id = @Model.CatId })</p>
 @Html.ActionLink("Return to all animals", "Index")

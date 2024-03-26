@@ -1,0 +1,35 @@
+@{
+  ViewData["Title"] = $"Edit {Model.Name}";
+}
+
+@model AnimalShelterClient.Models.Dog
+
+<h4>Edit Info about @Model.Name</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.DogId)
+  @Html.LabelFor(model => model.Name, "Name: ")
+  @Html.TextBoxFor(model => model.Name, new { @Value = Model.Name })
+  <br />
+  @Html.LabelFor(model => model.Breed, "Breed: ")
+  @Html.TextBoxFor(model => model.Breed, new { @Value = Model.Breed })
+  <br />
+  @Html.LabelFor(model => model.Sex, "Sex: ")
+  @Html.TextBoxFor(model => model.Sex, new { Value = Model.Sex })
+  <br />
+  @Html.LabelFor(model => model.Age, "Age: ")
+  @Html.TextBoxFor(model => model.Age, new { Value = Model.Age })
+  <br />
+  <label for="NeuteredSpayed">Neutered/Spayed:</label>
+    <input type="radio" id="neutered" name="NeuteredSpayed" value="true">
+    <label for="neutered">Yes</label>
+    <input type="radio" id="notNeutered" name="NeuteredSpayed" value="false">
+    <label for="notNeutered">No</label>
+  <br />
+  <br />
+  <input type="submit" value="Update" class="btn btn-primary"/>
+}
+
+<br />
+<p>@Html.ActionLink("Detail Page", "Details", new { id = @Model.DogId })</p>

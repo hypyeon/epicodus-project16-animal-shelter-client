@@ -28,4 +28,17 @@ public class CatsController : Controller
     Cat.Post(cat);
     return RedirectToAction("Index");
   }
+
+  public ActionResult Edit(int id)
+  {
+    Cat cat = Cat.GetCatDetails(id);
+    return View(cat);
+  }
+
+  [HttpPost]
+  public ActionResult Edit(Cat cat)
+  {
+    Cat.Put(cat);
+    return RedirectToAction("Details", new { id = cat.CatId });
+  }
 }

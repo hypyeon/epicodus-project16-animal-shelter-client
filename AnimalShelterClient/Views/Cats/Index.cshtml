@@ -7,7 +7,7 @@
 <ol>
 @foreach (Cat cat in Model)
 {
-  <li><a href="/Cats/Details/@(cat.CatId)"><strong>@cat.Name</strong></a> | (@cat.Sex) </li>
+  <li><a href="/Cats/Details/@(cat.CatId)"><strong>@cat.Name</strong></a> | @cat.Sex </li>
 }
 </ol>
 

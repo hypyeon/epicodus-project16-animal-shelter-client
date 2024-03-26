@@ -22,4 +22,5 @@
 <p>Age: @Model.Age</p>
 <p>Neutered/Spayed: @yesOrNo</p>
 
-@Html.ActionLink("Return to all animals", "Index")
+<p>@Html.ActionLink("Edit Info", "Edit", new { id = @Model.DogId })</p>
+<p>@Html.ActionLink("Return to all animals", "Index")</p>

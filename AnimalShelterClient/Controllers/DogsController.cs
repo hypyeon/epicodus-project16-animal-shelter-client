@@ -28,4 +28,17 @@ public class DogsController : Controller
     Dog.Post(dog);
     return RedirectToAction("Index");
   }
+
+  public ActionResult Edit(int id)
+  {
+    Dog dog = Dog.GetDogDetails(id);
+    return View(dog);
+  }
+
+  [HttpPost]
+  public ActionResult Edit(Dog dog)
+  {
+    Dog.Put(dog);
+    return RedirectToAction("Details", new { id = dog.DogId });
+  }
 }
