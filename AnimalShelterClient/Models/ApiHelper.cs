@@ -24,7 +24,7 @@ namespace AnimalShelterClient.Models
     public static async Task<string> GetDog(int id)
     {
       RestClient client = new RestClient("http://localhost:5000/");
-      RestRequest request = new RestRequest($"api/Dogs/{id}", Method.Get);
+      RestRequest request = new RestRequest($"api/v1/Dogs/{id}", Method.Get);
       RestResponse response = await client.GetAsync(request);
       return response.Content;
     }
@@ -32,9 +32,27 @@ namespace AnimalShelterClient.Models
     public static async Task<string> GetCat(int id)
     {
       RestClient client = new RestClient("http://localhost:5000/");
-      RestRequest request = new RestRequest($"api/Cats/{id}", Method.Get);
+      RestRequest request = new RestRequest($"api/v1/Cats/{id}", Method.Get);
       RestResponse response = await client.GetAsync(request);
       return response.Content;
+    }
+
+    public static async void DogPost(string newDog)
+    {
+      RestClient client = new RestClient("http://localhost:5000/");
+      RestRequest request = new RestRequest($"api/v1/Dogs", Method.Post);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(newDog);
+      await client.PostAsync(request);
+    }
+
+    public static async void CatPost(string newCat)
+    {
+      RestClient client = new RestClient("http://localhost:5000/");
+      RestRequest request = new RestRequest($"api/v1/Cats", Method.Post);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(newCat);
+      await client.PostAsync(request);
     }
   }
 }

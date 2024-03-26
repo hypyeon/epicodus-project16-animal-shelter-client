@@ -1,0 +1,34 @@
+@{
+  ViewData["Title"] = "Register New Dog";
+}
+
+@model AnimalShelterClient.Models.Dog
+
+<h4>Register New Dog to our shelter</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name, "Name: ")
+  @Html.TextBoxFor(model => model.Name)
+  <br />
+  @Html.LabelFor(model => model.Breed, "Breed: ")
+  @Html.TextBoxFor(model => model.Breed)
+  <br />
+  @Html.LabelFor(model => model.Sex, "Sex: ")
+  @Html.TextBoxFor(model => model.Sex)
+  <br />
+  @Html.LabelFor(model => model.Age, "Age (estimate is ok): ")
+  @Html.TextBoxFor(model => model.Age)
+  <br />
+  <label for="NeuteredSpayed">Neutered/Spayed:</label>
+    <input type="radio" id="neutered" name="NeuteredSpayed" value="true">
+    <label for="neutered">Yes</label>
+    <input type="radio" id="notNeutered" name="NeuteredSpayed" value="false">
+    <label for="notNeutered">No</label>
+  <br />
+  <br />
+  <input type="submit" value="Register" class="btn btn-primary"/>
+}
+
+<br />
+<p>@Html.ActionLink("Dog List", "Index")</p>

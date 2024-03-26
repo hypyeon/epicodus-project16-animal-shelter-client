@@ -16,4 +16,16 @@ public class CatsController : Controller
     Cat cat = Cat.GetCatDetails(id);
     return View(cat);
   }
+
+  public ActionResult Create()
+  {
+    return View();
+  }
+
+  [HttpPost]
+  public ActionResult Create(Cat cat)
+  {
+    Cat.Post(cat);
+    return RedirectToAction("Index");
+  }
 }

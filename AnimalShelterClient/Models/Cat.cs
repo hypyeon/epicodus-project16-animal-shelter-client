@@ -32,5 +32,11 @@ namespace AnimalShelterClient.Models
 
       return cat;
     }
+
+    public static void Post(Cat cat)
+    {
+      string jsonCat = JsonConvert.SerializeObject(cat);
+      ApiHelper.CatPost(jsonCat);
+    }
   }
 }
