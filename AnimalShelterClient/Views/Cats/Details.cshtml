@@ -1,0 +1,22 @@
+@{
+  ViewData["Title"] = $"Details for {Model.Name}";
+}
+
+@{
+  var yesOrNo = "";
+  if(Model.NeuteredSpayed)
+  {
+    yesOrNo = "Yes";
+  }
+  else
+  {
+    yesOrNo = "No";
+  }
+}
+
+<h1>All About @Model.Name</h1>
+
+<p>Sex: @Model.Sex</p>
+<p>Neutered/Spayed: @yesOrNo</p>
+
+@Html.ActionLink("Return to all animals", "Index")
