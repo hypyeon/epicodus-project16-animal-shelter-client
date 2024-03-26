@@ -46,5 +46,10 @@ namespace AnimalShelterClient.Models
       string jsonDog = JsonConvert.SerializeObject(dog);
       ApiHelper.DogPut(dog.DogId, jsonDog);
     }
+
+    public static void Delete(int id)
+    {
+      ApiHelper.DogDelete(id);
+    }
   }
 }

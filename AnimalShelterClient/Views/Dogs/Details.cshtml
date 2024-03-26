@@ -1,3 +1,5 @@
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment WebHostEnv
+
 @{
   ViewData["Title"] = $"Details for {Model.Name}";
 }
@@ -15,7 +17,14 @@
 }
 
 <h1>All About @Model.Name</h1>
-<img src="~/img/@(Model.Name).png" alt="@Model.Name" style="max-width: 300px;" />
+@if (System.IO.File.Exists($"{WebHostEnv.WebRootPath}/img/{Model.Name}.png"))
+{
+  <img src="~/img/@(Model.Name).png" alt="@Model.Name" style="max-width: 300px;" />
+}
+else
+{
+  <p style="color: gray;">No photo taken yet.</p>
+}
 
 <p>Breed: @Model.Breed</p>
 <p>Sex: @Model.Sex</p>
@@ -23,4 +32,5 @@
 <p>Neutered/Spayed: @yesOrNo</p>
 
 <p>@Html.ActionLink("Edit Info", "Edit", new { id = @Model.DogId })</p>
-<p>@Html.ActionLink("Return to all animals", "Index")</p>
+<p>@Html.ActionLink("Adopted!", "Delete", new { id = @Model.DogId })</p>
+<p>@Html.ActionLink("Return to Dog List", "Index")</p>

@@ -41,4 +41,17 @@ public class DogsController : Controller
     Dog.Put(dog);
     return RedirectToAction("Details", new { id = dog.DogId });
   }
+
+  public ActionResult Delete(int id)
+  {
+    Dog dog = Dog.GetDogDetails(id);
+    return View(dog);
+  }
+
+  [HttpPost, ActionName("Delete")]
+  public ActionResult DeleteConfirmed(int id)
+  {
+    Dog.Delete(id);
+    return RedirectToAction("Index");
+  }
 }

@@ -1,0 +1,19 @@
+@{
+  ViewData["Title"] = $"Unregister {Model.Name}";
+}
+
+@model AnimalShelterClient.Models.Cat
+
+<h4>Congratulations, @Model.Name!</h4>
+<p>On your new family and your furever home. We'll miss you.</p>
+
+<img src="~/img/@(Model.Name).png" alt="@Model.Name" style="max-width: 300px;" />
+
+<p style="color: gray;">Confirming adoption will remove @Model.Name from our shelter list.</p>
+
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Confirm Adoption" class="btn btn-primary"/>
+}
+
+@Html.ActionLink("Detail Page", "Details", new { id = @Model.CatId })
